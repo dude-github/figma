@@ -1,10 +1,19 @@
 "use client";
+
+import Navbar from "@/components/Navbar";
 import Live from "@/components/Live";
+import LeftSidebar from "@/components/LeftSidebar";
+import RightSidebar from "@/components/RightSidebar";
 
 export default function Page() {
   return (
-    <div className="h-[100vh] w-full flex justify-center items-center text-center">
-      <Live />
-    </div>
+    <main className="h-screen overflow-hidden">
+      <Navbar />
+      <section className="flex h-full flex-row">
+        <LeftSidebar />
+        <Live />
+        <RightSidebar />
+      </section>
+    </main>
   );
 }
