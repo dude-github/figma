@@ -199,7 +199,7 @@ const Home = () => {
     const { objectId } = object;
 
     /**
-     * Turn Fabric object (kclass) into JSON format so that we can store it in the
+     * Turn Fabric object (class) into JSON format so that we can store it in the
      * key-value store.
      */
     const shapeData = object.toJSON();
