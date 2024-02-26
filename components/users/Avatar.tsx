@@ -1,11 +1,6 @@
 import Image from "next/image";
 
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "../ui/tooltip";
+// import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 type Props = {
   name: string;
@@ -13,28 +8,26 @@ type Props = {
 };
 
 const Avatar = ({ name, otherStyles }: Props) => (
-  <TooltipProvider>
-    <Tooltip>
-      <TooltipTrigger>
+  <>
+    <>
+      <>
         <div
           className={`relative h-9 w-9 rounded-full ${otherStyles}`}
           data-tooltip={name}
         >
           <Image
-            src={`https://liveblocks.io/avatars/avatar-${Math.floor(
-              Math.random() * 30
-            )}.png`}
+            src={`https://liveblocks.io/avatars/avatar-${Math.floor(Math.random() * 30)}.png`}
             fill
-            className="rounded-full"
+            className='rounded-full'
             alt={name}
           />
         </div>
-      </TooltipTrigger>
-      <TooltipContent className="border-none bg-primary-grey-200 px-2.5 py-1.5 text-xs">
+      </>
+      <div className='border-none bg-primary-grey-200 px-2.5 py-1.5 text-xs'>
         {name}
-      </TooltipContent>
-    </Tooltip>
-  </TooltipProvider>
+      </div>
+    </>
+  </>
 );
 
 export default Avatar;

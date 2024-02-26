@@ -11,10 +11,19 @@ import {
 import useInterval from "@/hooks/useInterval";
 import { CursorMode, CursorState, Reaction, ReactionEvent } from "@/types/type";
 import { shortcuts } from "@/constants";
-import FlyingReaction from "./reaction/FlyingReaction";
-import CursorChat from "./cursor/CursorChat";
-import ReactionSelector from "./reaction/ReactionButton";
-import LiveCursors from "./cursor/LiveCursor";
+
+import {
+  CursorChat,
+  FlyingReaction,
+  LiveCursors,
+  ReactionSelector,
+} from "./index";
+// import {
+//   ContextMenu,
+//   ContextMenuContent,
+//   ContextMenuItem,
+//   ContextMenuTrigger,
+// } from "./ui/context-menu";
 
 type Props = {
   canvasRef: React.MutableRefObject<HTMLCanvasElement | null>;
@@ -238,8 +247,8 @@ const Live = ({ canvasRef, undo, redo }: Props) => {
   return (
     <>
       <div
-        className="relative flex h-full w-full flex-1 items-center justify-center"
-        id="canvas"
+        className='relative flex h-full w-full flex-1 items-center justify-center'
+        id='canvas'
         style={{
           cursor: cursorState.mode === CursorMode.Chat ? "none" : "auto",
         }}
@@ -287,16 +296,16 @@ const Live = ({ canvasRef, undo, redo }: Props) => {
         {/* <Comments /> */}
       </div>
 
-      <div className="right-menu-content">
+      <div className='right-menu-content'>
         {shortcuts.map((item) => (
-          <div
+          <ul
             key={item.key}
-            className="right-menu-item"
+            className='right-menu-item'
             onClick={() => handleContextMenuClick(item.name)}
           >
             <p>{item.name}</p>
-            <p className="text-xs text-primary-grey-300">{item.shortcut}</p>
-          </div>
+            <p className='text-xs text-primary-grey-300'>{item.shortcut}</p>
+          </ul>
         ))}
       </div>
     </>
