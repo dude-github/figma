@@ -18,6 +18,7 @@ import {
   LiveCursors,
   ReactionSelector,
 } from "./index";
+import { Comments } from "./comments/Comments";
 // import {
 //   ContextMenu,
 //   ContextMenuContent,
@@ -293,7 +294,7 @@ const Live = ({ canvasRef, undo, redo }: Props) => {
         <LiveCursors others={others} />
 
         {/* Show the comments */}
-        {/* <Comments /> */}
+        <Comments />
       </div>
 
       <div className='right-menu-content'>
