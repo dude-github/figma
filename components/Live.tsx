@@ -6,7 +6,6 @@ import {
   useBroadcastEvent,
   useEventListener,
   useMyPresence,
-  useOthers,
 } from "@/liveblocks.config";
 import useInterval from "@/hooks/useInterval";
 import { CursorMode, CursorState, Reaction, ReactionEvent } from "@/types/type";
@@ -19,12 +18,13 @@ import {
   ReactionSelector,
 } from "./index";
 import { Comments } from "./comments/Comments";
-// import {
-//   ContextMenu,
-//   ContextMenuContent,
-//   ContextMenuItem,
-//   ContextMenuTrigger,
-// } from "./ui/context-menu";
+
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from "./ui/context-menu";
 
 type Props = {
   canvasRef: React.MutableRefObject<HTMLCanvasElement | null>;
@@ -38,7 +38,6 @@ const Live = ({ canvasRef, undo, redo }: Props) => {
    *
    * useOthers: https://liveblocks.io/docs/api-reference/liveblocks-react#useOthers
    */
-  const others = useOthers();
 
   /**
    * useMyPresence returns the presence of the current user in the room.
@@ -46,7 +45,7 @@ const Live = ({ canvasRef, undo, redo }: Props) => {
    *
    * useMyPresence: https://liveblocks.io/docs/api-reference/liveblocks-react#useMyPresence
    */
-  const [{ cursor }, updateMyPresence] = useMyPresence() as any;
+  const [{ cursor }, updateMyPresence] = useMyPresence();
 
   /**
    * useBroadcastEvent is used to broadcast an event to all the other users in the room.
@@ -246,8 +245,8 @@ const Live = ({ canvasRef, undo, redo }: Props) => {
   }, []);
 
   return (
-    <>
-      <div
+    <ContextMenu>
+      <ContextMenuTrigger
         className='relative flex h-full w-full flex-1 items-center justify-center'
         id='canvas'
         style={{
@@ -291,25 +290,25 @@ const Live = ({ canvasRef, undo, redo }: Props) => {
         )}
 
         {/* Show the live cursors of other users */}
-        <LiveCursors others={others} />
+        <LiveCursors />
 
         {/* Show the comments */}
         <Comments />
-      </div>
+      </ContextMenuTrigger>
 
-      <div className='right-menu-content'>
+      <ContextMenuContent className='right-menu-content'>
         {shortcuts.map((item) => (
-          <ul
+          <ContextMenuItem
             key={item.key}
             className='right-menu-item'
             onClick={() => handleContextMenuClick(item.name)}
           >
             <p>{item.name}</p>
             <p className='text-xs text-primary-grey-300'>{item.shortcut}</p>
-          </ul>
+          </ContextMenuItem>
         ))}
-      </div>
-    </>
+      </ContextMenuContent>
+    </ContextMenu>
   );
 };
 
