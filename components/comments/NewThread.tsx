@@ -70,7 +70,7 @@ export const NewThread = ({ children }: Props) => {
             return el.classList?.contains("lb-composer-editor-actions");
           }));
 
-        // if click is inisde/on composer, don't do anything
+        // if click is inside/on composer, don't do anything
         if (isClickOnComposer) {
           return;
         }
