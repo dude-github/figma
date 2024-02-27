@@ -3,10 +3,10 @@ import React, { useMemo, useRef } from "react";
 import { RightSidebarProps } from "@/types/type";
 import { bringElement, modifyShape } from "@/lib/shapes";
 
-// import Text from "./settings/Text";
-// import Color from "./settings/Color";
-// import Export from "./settings/Export";
-// import Dimensions from "./settings/Dimensions";
+import Text from "./settings/Text";
+import Color from "./settings/Color";
+import Export from "./settings/Export";
+import Dimensions from "./settings/Dimensions";
 
 const RightSidebar = ({
   elementAttributes,
@@ -42,7 +42,7 @@ const RightSidebar = ({
           Make changes to canvas as you like
         </span>
 
-        {/* <Dimensions
+        <Dimensions
           isEditingRef={isEditingRef}
           width={elementAttributes.width}
           height={elementAttributes.height}
@@ -54,26 +54,25 @@ const RightSidebar = ({
           fontSize={elementAttributes.fontSize}
           fontWeight={elementAttributes.fontWeight}
           handleInputChange={handleInputChange}
- 
         />
 
         <Color
           inputRef={colorInputRef}
           attribute={elementAttributes.fill}
-          placeholder="color"
-          attributeType="fill"
+          placeholder='color'
+          attributeType='fill'
           handleInputChange={handleInputChange}
         />
 
         <Color
           inputRef={strokeInputRef}
           attribute={elementAttributes.stroke}
-          placeholder="stroke"
-          attributeType="stroke"
+          placeholder='stroke'
+          attributeType='stroke'
           handleInputChange={handleInputChange}
         />
 
-        <Export /> */}
+        <Export />
       </section>
     ),
     []
